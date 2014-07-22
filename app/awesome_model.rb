@@ -7,16 +7,7 @@ class AwesomeModel < UIViewController
     super
   end
 
-  def insert
-    puts "retain-count: #{self.retainCount}"
-    # my_hash['something'].push "Cool String" - ether way is problematic
-    my_hash['something'] = ['Cool String']
-    puts "retain-count: #{self.retainCount}"
+  def do_cleanup_work
+    puts "disable observers"
   end
-
-  def my_hash
-    # @my_hash ||= Hash.new { |h,k| h[k] = [] } - ether way is problematic
-    @my_hash ||= Hash.new { }
-  end
-
 end

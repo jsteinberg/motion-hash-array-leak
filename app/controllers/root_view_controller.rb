@@ -1,8 +1,12 @@
 class RootViewController < UIViewController
-  attr_accessor :action_button, :awesome_model
+  attr_accessor :action_button, :awesome_models
 
   def dealloc
     puts "dealloc: RootViewController"
+
+    self.awesome_models.each do |awesome_model|
+      awesome_model.do_cleanup_work
+    end
 
     super
   end
@@ -16,8 +20,7 @@ class RootViewController < UIViewController
     self.action_button.frame = [[80, 284], [160, 40]]
     view.addSubview(self.action_button)
 
-    self.awesome_model = AwesomeModel.new
-    self.awesome_model.insert
+    self.awesome_models = [AwesomeModel.new, AwesomeModel.new]
 
     self.view.backgroundColor = randomColor()
   end
